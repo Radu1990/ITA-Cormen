@@ -56,4 +56,27 @@ func TestMergeSort (t *testing.T) {
 	fmt.Println(mergeSort(B, 0, 7))
 }
 
+// 6
+func TestRecurseInsertionSort (t *testing.T) {
+	A := []int{5,2,4,32,10,101,5}
+	fmt.Printf("Unsorted array: %d\n", A)
+	fmt.Printf("Array sorted increasingly: %d\n", recurseInsertionSort(A, 6))
+}
+
+// 7
+func TestBinarySearchRecurse (t *testing.T) {
+	// if A is sorted
+	A := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}
+	counter := 0
+	fmt.Printf("Sorted array: %d\n", A)
+	fmt.Printf("Searched element index: %d\n", binarySearchRecurse(A, 5, counter))
+}
+
+// 8
+func TestRecursiveBinarySearch (t *testing.T) {
+	// if A is sorted
+	A := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Printf("Sorted array: %d\n", A)
+	fmt.Printf("Searched element index: %d\n", recursiveBinarySearch(A, 2, 0, 10))
+}
 

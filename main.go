@@ -155,7 +155,7 @@ func merge (A []int, p, q, r int) []int {
 	return A
 }
 
-func mergeSort (A[]int, p, r int) []int {
+func mergeSort (A []int, p, r int) []int {
 	var q int
 	if p < r {
 		q = (p + r) / 2
@@ -164,4 +164,77 @@ func mergeSort (A[]int, p, r int) []int {
 		merge(A, p, q, r)
 	}
 	return A
+}
+
+// 6. Insertion Sort Recursive version
+func recurseInsertionSort (A []int, n int) []int {
+	if n >= 1 {
+		recurseInsertionSort(A , n-1)
+		insert(A, n)
+	}
+	return A
+}
+
+func insert(A []int, k int) {
+	key := A[k]
+	i := k-1
+	for i >= 0 && A[i] > key {
+		A[i+1] = A[i]
+		i = i - 1
+	A[i+1] = key
+	}
+}
+
+// 7. Binary Search Algorithm (recursive + iterative)
+// (if A is a Sorted List)
+type resultBinary interface {}
+// input parameters n an unsorted array and v the integer value to be searched inside the list
+func binarySearch (n []int, x int) resultBinary {
+	for i := 0; i<len(n); i++ {
+		if n[i] == x {
+			return i
+		}
+	}
+	return nil
+}
+
+func binarySearchRecurse (n []int, x int, counter int) resultBinary {
+	limitInf := len(n)
+	// We use this counter to see how many recurrences are made
+	if x == 0 || x<0  {
+		fmt.Println("not supported for non positive elements")
+		return nil
+	}
+	counter ++
+	if x <= limitInf {
+		limitInf := len(n) / 2
+		fmt.Printf("recurrence: %d\n", counter)
+		binarySearchRecurse(n[:limitInf-1], x, counter)
+		ret := binarySearch(n, x)
+		return ret
+	}
+	return nil
+}
+
+// 8. Binary Search Algorithm (recursive only)
+// n - sorted Array, x - searched value
+// low - 0 index, high - n index
+// T(n)=T((n−1)/2)+Θ(1)=Θ(lgn)
+type resultRecursive interface {}
+func recursiveBinarySearch (n []int, x, low, high int) resultRecursive {
+	if low > high {
+		return nil
+	}
+	mid := (low + high) / 2
+	if x == n[mid] {
+		fmt.Println("OK")
+		return mid
+	}
+	if x > n[mid] {
+		ret := recursiveBinarySearch(n, x, mid+1, high)
+		return ret
+	} else {
+		ret := recursiveBinarySearch(n, x, low, mid-1)
+		return ret
+	}
 }
