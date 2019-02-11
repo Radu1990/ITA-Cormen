@@ -8,43 +8,38 @@ func main() {
 
 // 1. Insertion Sort Algorithm
 func insertionSortIncreasing (n []int) []int {
-	// Here we create a new list containing the same elements from the array to be sorted
-	var sortedList []int
-	sortedList = n
 
 	for j := 1; j <= (len(n)-1); j++ {
 		// This is the selected key to which we will compare our values inside the sorted array
 		key := n[j]
 		// Insert n[j] into the sorted sequence sortedList[1...j-1]
 		i := j-1
-		for i >= 0 && sortedList[i] > key {
-			sortedList[i+1] = n[i]
+		for i >= 0 && n[i] > key {
+			n[i+1] = n[i]
 			i = i-1
 		}
-		sortedList[i+1] = key
+		n[i+1] = key
 	}
-	return sortedList
+	return n
 }
-
+// ex 2.1-2
 func insertionSortDecreasing (n []int) []int {
-	// Here we create a new list containing the same elements from the array to be sorted
-	var sortedList []int
-	sortedList = n
 
 	for j := 1; j <= (len(n)-1); j++ {
 		// This is the selected key to which we will compare our values inside the sorted array
 		key := n[j]
 		// Insert n[j] into the sorted sequence sortedList[1...j-1]
 		i := j-1
-		for i >= 0 && sortedList[i] < key {
-			sortedList[i+1] = n[i]
+		for i >= 0 && n[i] < key {
+			n[i+1] = n[i]
 			i = i-1
 		}
-		sortedList[i+1] = key
+		n[i+1] = key
 	}
-	return sortedList
+	return n
 }
 
+// ex 2.1-3
 // 2. Linear Search Algorithm
 type result interface {}
 // input parameters n an unsorted array and v the integer value to be searched inside the list
@@ -57,6 +52,7 @@ func linearSearch (n []int, v int) result {
 	return nil
 }
 
+// ex 2.1-4
 // 3. Add 2 Binary Integers
 func addBinary(A,B [5]byte) [6]byte {
 	var carry byte
@@ -77,6 +73,7 @@ func addBinary(A,B [5]byte) [6]byte {
 	return C
 }
 
+// ex 2.2-2
 // 4. Selection Sort Algorithm
 func selectionSort (a []int ) []int {
 	n := len(a)
@@ -166,6 +163,7 @@ func mergeSort (A []int, p, r int) []int {
 	return A
 }
 
+// ex 2.3-4
 // 6. Insertion Sort Recursive version
 func recurseInsertionSort (A []int, n int) []int {
 	if n >= 1 {
@@ -185,7 +183,8 @@ func insert(A []int, k int) {
 	}
 }
 
-// 7. Binary Search Algorithm (recursive + iterative)
+// ex 2.3-5
+// 7. Binary Search Algorithm (recursive + iterative, my version)
 // (if A is a Sorted List)
 type resultBinary interface {}
 // input parameters n an unsorted array and v the integer value to be searched inside the list
@@ -216,6 +215,7 @@ func binarySearchRecurse (n []int, x int, counter int) resultBinary {
 	return nil
 }
 
+// ex 2.3-5
 // 8. Binary Search Algorithm (recursive only)
 // n - sorted Array, x - searched value
 // low - 0 index, high - n index
@@ -237,4 +237,36 @@ func recursiveBinarySearch (n []int, x, low, high int) resultRecursive {
 		ret := recursiveBinarySearch(n, x, low, mid-1)
 		return ret
 	}
+}
+// 9. Binary Search Algorithm (iterative)
+type resultIterativeBinarySearch interface {}
+func iterativeBinarySearch (A []int, x int) resultIterativeBinarySearch {
+	length := len(A)
+	low := A[0]
+	high := A[length-1]
+	for low <= high {
+		mid := (low + high) / 2
+		if x == A[mid] {
+			return mid
+		}
+		if x > A[mid] {
+			low = mid + 1
+		} else {
+			high = mid - 1
+		}
+	}
+	return nil
+}
+
+// ex 2.3-7
+// Determines if two elements in S are the sum of X
+func pairExists (S []int, X int) bool {
+	A := mergeSort (S, 0, len(S)-1)
+	for i:= 0; i<len(A); i++ {
+		if binarySearch (A, X-S[i]) != nil {
+			fmt.Printf("X element %d, S[i] element %d, X-S[i] element %d\n", X, S[i], X-S[i])
+			return true
+		}
+ 	}
+	return false
 }

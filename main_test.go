@@ -80,3 +80,18 @@ func TestRecursiveBinarySearch (t *testing.T) {
 	fmt.Printf("Searched element index: %d\n", recursiveBinarySearch(A, 2, 0, 10))
 }
 
+// 9
+func TestIterativeBinarySearch (t *testing.T) {
+	// if A is sorted
+	A := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Printf("Sorted array: %d\n", A)
+	fmt.Printf("Searched element index: %d\n", iterativeBinarySearch(A, 2))
+}
+
+// 10
+func TestPairExists (t *testing.T) {
+	A := []int{5,2,4,3,6,2,7,6,8}
+	fmt.Printf("Unsorted array: %d\n", A)
+	fmt.Printf("Do elements exist ? %v\n", pairExists(A, 5))
+}
+
