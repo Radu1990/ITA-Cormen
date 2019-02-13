@@ -95,3 +95,9 @@ func TestPairExists (t *testing.T) {
 	fmt.Printf("Do elements exist ? %v\n", pairExists(A, 5))
 }
 
+// 11
+func TestBubbleSort (t *testing.T) {
+	A := []int{5,2,4,3,6,2,7,6,8}
+	fmt.Printf("Unsorted array: %d\n", A)
+	fmt.Printf("Sorted array: %d\n", bubbleSort(A))
+}

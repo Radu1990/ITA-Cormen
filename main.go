@@ -270,3 +270,23 @@ func pairExists (S []int, X int) bool {
  	}
 	return false
 }
+
+// 10. Bubble Sort Algorithm
+// this function swaps the two elements of the array
+// A - Array; X,Y - index of elements being swapped
+func swapElements (A[]int, X,Y int) {
+	A[X], A[Y] = A[Y], A[X]
+}
+
+func bubbleSort (A []int) []int {
+	lastIndex := len(A) - 1 // last element index
+	for i:= 0; i < lastIndex - 1; i++ {
+		for j := lastIndex; j > i; j-- {
+			fmt.Printf("J %d J-a %d\n", j, j-1)
+			if A[j] < A[j-1] {
+				swapElements(A, j, j-1)
+			}
+		}
+	}
+	return A
+}
