@@ -101,3 +101,32 @@ func TestBubbleSort (t *testing.T) {
 	fmt.Printf("Unsorted array: %d\n", A)
 	fmt.Printf("Sorted array: %d\n", bubbleSort(A))
 }
+
+// 12
+func TestHornerPolynomial (t *testing.T) {
+	A := []int{2,4,6,8} // list of coefficients for a0, a1, a2, ... , an
+	fmt.Printf("list of coefficients for a0, a1, a2, ... , an : %d\n", A)
+	fmt.Printf("Polynomial result: %d\n", hornerPolynomial(A, 5))
+}
+
+// 13
+func TestInversions (t *testing.T) {
+	A := []int{2,3,8,6,1} // list of coefficients for a0, a1, a2, ... , an
+	fmt.Printf("array  %d\n", A)
+	fmt.Printf("lists of inversions %d\n", inversion(A))
+}
+
+// 14
+func TestFindMaxCrossingSubarray (t *testing.T) {
+	A := []int{13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7} // list of coefficients for a0, a1, a2, ... , an
+	fmt.Printf("array:  %d\n", A)
+	res := findMaxCrossingSubarray(A, 0, 8 ,15)
+	fmt.Printf("result: subarray[%d:%d] with sum %d\n", res[0], res[1], res[2])
+}
+
+func TestFindMaximumSubarray (t *testing.T) {
+	A := []int{13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7} // list of coefficients for a0, a1, a2, ... , an
+	fmt.Printf("array:  %d\n", A)
+	res := findMaximumSubarray(A, 0, 8 )
+	fmt.Printf("result: subarray[%d:%d] with sum %d\n", res[0], res[1], res[2])
+}
