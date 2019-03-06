@@ -290,3 +290,114 @@ func bubbleSort (A []int) []int {
 	}
 	return A
 }
+
+// ex 2-3
+// 11. Horner's Rule for evaluating a polynomial
+// given the coefficients a0,a1,...an and a value for x
+func hornerPolynomial (a[]int, x int) int {
+	y := 0
+	lastIndex := len(a) - 1
+	for i := lastIndex ; i >= 0 ; i-- {
+		y = a[i] + x * y
+	}
+	return y
+}
+
+// ex 2-4
+// 12. Inversions
+func inversion (a[]int) [][]int {
+	var listInversions [][]int
+	counter := 0
+	for i:= 0; i < len(a); i++ {
+		for j:= 0; j < len(a); j++ {
+			if i < j && a[i]>a[j] {
+				listInversions = append(listInversions,[]int{a[i], a[j]})
+				counter ++
+			}
+		}
+	}
+	fmt.Printf("%d inversions\n", counter)
+	return listInversions
+}
+
+// 13 The maximum-subarray problem
+
+// Maximum Crossing Subarray Finding Algorithm
+func findMaxCrossingSubarray(A[]int, low, mid, high int) []int {
+	// Find a maximum subarray of the left half
+	leftSum := -123456789
+	maxLeft := 0
+	sumOne := 0
+	for i:= mid; i >= low; i-- {
+		sumOne = sumOne + A[i]
+		if sumOne > leftSum {
+			leftSum = sumOne
+			maxLeft = i
+		}
+	}
+
+	// Find a maximum subarray of the right half
+	rightSum := -123456789
+	maxRight := 0
+	sumTwo := 0
+	for j := mid + 1; j <= high; j++ {
+		sumTwo = sumTwo + A[j]
+		if sumTwo > rightSum {
+			rightSum = sumTwo
+			maxRight = j
+		}
+	}
+
+	// Combine the results (Left and Right Indexes and the sum of the integers)
+	ret := []int{maxLeft, maxRight, leftSum + rightSum}
+
+	return ret
+}
+
+// Maximum Subarray Finding Algorithm
+func findMaximumSubarray (A[]int, low, high int) []int {
+	if high == low { 									// Base case: only one element
+		var ret []int
+		ret = append(ret, low, high, A[low])
+		return ret
+	} else {
+		// Middle index of array
+		mid := (low + high) / 2
+
+		// Left Maximum Subarray
+		// (left-low, left-high, left-sum)
+		leftArray := findMaximumSubarray(A, low, mid)
+		leftLow := leftArray[0]
+		leftHigh := leftArray[1]
+		leftSum := leftArray[2]
+		// Right Maximum Subarray
+		// (right-low, right-high, right-sum)
+		rightArray := findMaximumSubarray(A, mid+1, high)
+		rightLow := rightArray[0]
+		rightHigh := rightArray[1]
+		rightSum := rightArray[2]
+
+		// Crossing Maximum Subarray
+		// (cross-low, cross-high, cross-sum)
+		crossArray := findMaxCrossingSubarray(A, low, mid, high)
+		crossLow := crossArray[0]
+		crossHigh := crossArray[1]
+		crossSum := crossArray[2]
+
+		if leftSum >= rightSum && leftSum >= crossSum {
+			ret := []int{leftLow, leftHigh, leftSum}
+			return ret
+		}
+		if rightSum >= leftSum && rightSum >= crossSum {
+			ret := []int{rightLow, rightHigh, rightSum}
+			return ret
+		} else {
+			ret := []int{crossLow, crossHigh, crossSum}
+			return ret
+		}
+	}
+}
+
+
+
+
