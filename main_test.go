@@ -117,16 +117,39 @@ func TestInversions (t *testing.T) {
 }
 
 // 14
-func TestFindMaxCrossingSubarray (t *testing.T) {
-	A := []int{13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7} // list of coefficients for a0, a1, a2, ... , an
+func TestFindMaxCrossingSubarrayA (t *testing.T) {
+	A := []int{13,-3,25,20,-3,-16,-23,-18,-20,-7,12,5,22,15,-4,7} // list of coefficients for a0, a1, a2, ... , an
 	fmt.Printf("array:  %d\n", A)
 	res := findMaxCrossingSubarray(A, 0, 8 ,15)
 	fmt.Printf("result: subarray[%d:%d] with sum %d\n", res[0], res[1], res[2])
 }
 
-func TestFindMaximumSubarray (t *testing.T) {
-	A := []int{13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7} // list of coefficients for a0, a1, a2, ... , an
-	fmt.Printf("array:  %d\n", A)
-	res := findMaximumSubarray(A, 0, 8 )
-	fmt.Printf("result: subarray[%d:%d] with sum %d\n", res[0], res[1], res[2])
+func TestFindMaxCrossingSubarrayB (t *testing.T) {
+	B := []int{13,-3,25,20,-3,-16}
+	fmt.Printf("array:  %d\n", B)
+	resB := findMaxCrossingSubarray(B, 0, 2, 5 )
+	fmt.Printf("result: subarray[%d:%d] with sum %d\n", resB[0], resB[1], resB[2])
 }
+
+func TestFindMaximumSubarrayA (t *testing.T) {
+	A := []int{13,-3,25,20,-3,-16,-23,-18,-20,-7,12,5,22,15,-4,7}
+	fmt.Printf("array:  %d\n", A)
+	res := findMaximumSubarray(A, 0, 15 )
+	fmt.Printf("result: subarray[%d:%d] with sum %d\n", res[0], res[1], res[2])
+
+}
+
+func TestFindMaximumSubarrayB (t *testing.T) {
+	B := []int{13,-3,25,20,-3,-16}
+	fmt.Printf("array:  %d\n", B)
+	resB := findMaximumSubarray(B, 0, 5 )
+	fmt.Printf("result: subarray[%d:%d] with sum %d\n", resB[0], resB[1], resB[2])
+}
+
+func TestFindMaximumSubarrayAllNegative (t *testing.T) {
+	B := []int{-13,-3,-25,-20,-3,-16}
+	fmt.Printf("array:  %d\n", B)
+	resB := findMaximumSubarray(B, 0, 5 )
+	fmt.Printf("result: subarray[%d:%d] with sum %d\n", resB[0], resB[1], resB[2])
+}
+

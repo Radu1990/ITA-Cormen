@@ -350,7 +350,6 @@ func findMaxCrossingSubarray(A[]int, low, mid, high int) []int {
 
 	// Combine the results (Left and Right Indexes and the sum of the integers)
 	ret := []int{maxLeft, maxRight, leftSum + rightSum}
-
 	return ret
 }
 
@@ -397,7 +396,3 @@ func findMaximumSubarray (A[]int, low, high int) []int {
 		}
 	}
 }
-
-
-
-
