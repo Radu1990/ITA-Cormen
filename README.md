@@ -1,3 +1,6 @@
 # ITA-Thomas H. Cormen
-Introduction to Algorithms Third Edition
-Algorithms written in Go and Tests for every function while learning after this book.
+This repo contains Algorithms and Tests
+for every function written in Golang while reading  
+"Introduction to Algorithms Third Edition"
+by Charles E. Leiserson, Clifford Stein,
+Ronald Rivest, and Thomas H. Cormen.
